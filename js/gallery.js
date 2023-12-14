@@ -79,9 +79,10 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage() {
-	//implement me as an object to hold the following data about an image:
-	//1. location where photo was taken
+const details = ("NYC", "City","9/24/1997","https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement");
+
+function GalleryImage(location, Description, Date, URL) {
+	this.location = "NYC";
 	//2. description of photo
 	//3. the date when the photo was taken
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
