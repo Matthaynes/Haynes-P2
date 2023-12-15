@@ -90,7 +90,7 @@ function fetchJSON(){
 	mRequest.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 		   // Typical action to be performed when the document is ready:
-		  mJson = mRequest.responseText;
+		  mJson = JSON.parse(mRequest.responseText);
 		}
 	};
 	mRequest.open("GET", mUrl, true);
