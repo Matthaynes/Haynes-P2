@@ -33,7 +33,7 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	//Add code here to access the #slideShow element.
+	$("slideShow img")
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
@@ -91,6 +91,7 @@ function fetchJSON(){
 		if (this.readyState == 4 && this.status == 200) {
 		   // Typical action to be performed when the document is ready:
 		  mJson = JSON.parse(mRequest.responseText);
+		  mImages = JSON.parse()
 		}
 	};
 	mRequest.open("GET", mUrl, true);
