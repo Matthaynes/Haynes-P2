@@ -33,10 +33,9 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	$("#slideShow img").replaceWith(mImages);
-	//Access the img element and replace its source
-	//with a new image from your images array which is loaded 
-	//from the JSON string
+	var slideShow = document.getElementbyId("slideShow");
+	var imgElement = slideShow.querySelector('img');
+	imgElement.src = mImages[mCurrentIndex];
 	console.log('swap photo');
 }
 
