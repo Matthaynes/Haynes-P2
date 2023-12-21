@@ -78,7 +78,7 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function galleryImage(location, Description, Date, URL) {
+function galleryImage(location, description, date, URL) {
 	var location;
 	var description;
 	var date;
@@ -90,9 +90,43 @@ function fetchJSON(){
 		if (this.readyState == 4 && this.status == 200) {
 		   // Typical action to be performed when the document is ready:
 		  mJson = JSON.parse(mRequest.responseText);
-		  mImages = JSON.parse(mRequest.response);
+		 jsonData.forEach(function (item) {
+            var galleryImage = new GalleryImage(item.location, item.description, item.date, item.img);
+            mImages.push(galleryImage);
 		}
 	};
 	mRequest.open("GET", mUrl, true);
 	mRequest.send();
 }
+	// Click handler for moreIndicator
+$('.moreIndicator').click(function () {
+    // Toggle rotation class
+    if ($(this).hasClass('rot90')) {
+        $(this).addClass('rot270').removeClass('rot90');
+    } else {
+        $(this).addClass('rot90').removeClass('rot270');
+    }
+
+    // Slide down/up div.details
+    $('#details').fadeToggle();
+});
+
+// Hover handlers for nextPhoto and prevPhoto
+$('#nextPhoto, #prevPhoto').hover(function () {
+    $(this).css('opacity', '0.8');
+}, function () {
+    $(this).css('opacity', '1');
+});
+
+// Click handlers for next and previous photos
+$('#nextPhoto').click(function () {
+    // Implement logic to go to the next photo
+    mCurrentIndex = (mCurrentIndex + 1) % mImages.length;
+    swapPhoto();
+});
+
+$('#prevPhoto').click(function () {
+    // Implement logic to go to the previous photo
+    mCurrentIndex = (mCurrentIndex - 1 + mImages.length) % mImages.length;
+    swapPhoto();
+});
