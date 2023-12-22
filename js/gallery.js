@@ -33,10 +33,25 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
+	
+  if(mCurrentIndex >= mImages.length)
+  {
+    mCurrentIndex = 0;
+  }
+
+  if(mCurrentIndex < 0) {
+    mCurrentIndex = mImages.length-1;
+  }
+
 	var slideShow = document.getElementbyId("slideShow");
 	var imgElement = slideShow.querySelector('img');
 	imgElement.src = mImages[mCurrentIndex];
 	console.log('swap photo');
+
+	
+  mLastFrameTime = 0;
+  mCurrentIndex +=1;
+  
 }
 
 // Counter for the mImages array
