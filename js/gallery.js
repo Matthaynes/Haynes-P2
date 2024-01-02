@@ -33,7 +33,7 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	$("#slideShow img").replaceWith(mImages);
+	document.getElementById('photo').src = mImages[mCurrentIndex].url;
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
@@ -54,7 +54,7 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = images.JSON;
+var mUrl = 'images.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -76,14 +76,27 @@ $(document).ready( function() {
 window.addEventListener('load', function() {
 	
 	console.log('window loaded');
+	fetchJSON();
 
 }, false);
 
-function galleryImage(location, Description, Date, URL) {
-	var location;
-	var description;
-	var date;
-	var img;
+function GalleryImage() {
+	let location;
+	let description;
+	let date;
+	let url;
+}
+
+function iterateJSON()
+{
+	for(let i = 0; i < mJson.images.length; i++)
+	{
+		mImages[i] = new GalleryImage();
+		mImages[i].location = mJson.images[i].imgLocation;
+		mImages[i].description = mJson.images[i].description;
+		mImages[i].date = mJson.images[i].date;
+		mImages[i].url = mJson.images[i].imgPath;
+	}
 }
 
 function fetchJSON(){
@@ -91,8 +104,8 @@ function fetchJSON(){
 		if (this.readyState == 4 && this.status == 200) {
 		   // Typical action to be performed when the document is ready:
 		  mJson = JSON.parse(mRequest.responseText);
-		  mImages = JSON.parse(mRequest.response);
-		}
+		  iterateJSON();
+		} 
 	};
 	mRequest.open("GET", mUrl, true);
 	mRequest.send();
