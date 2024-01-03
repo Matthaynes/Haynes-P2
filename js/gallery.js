@@ -40,6 +40,12 @@ function swapPhoto() {
 	console.log('swap photo');
 
 	mCurrentIndex++;
+	
+	if(
+		mCurrentIndex >= mJson.images.length
+	) {
+		mCurrentIndex = 0;
+	}
 }
 
 // Counter for the mImages array
@@ -71,7 +77,7 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+	//$('.details').eq(0).hide();
 	
 });
 
