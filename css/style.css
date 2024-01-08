@@ -68,9 +68,28 @@ body {
 	margin: 20px 0px;
 }
 
+img.moreIndicator.rot90{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	transform-origin: bottom center;
+	transition: transform 0.5s ease;
+
+}
+
+img{
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+	margin: 0 auto;
+}
 /*Add CSS styles to rotate the element 90deg
 Make it animate nicely. You'll need CSS3 for this*/
-.rot90 {}
+.rot90 {
+	transform: rotate(90deg);
+	transition: transform 0.5s ease;
+}
 
 /*Add CSS styles to rotate the element 180deg
 Make it animate nicely. You'll need CSS3 for this*/
