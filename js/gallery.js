@@ -148,11 +148,22 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+
+    if(urlParams.has('json'))
+    {
+        mUrl = urlParams.get('json');
+    } 
+
   // Counter for the mImages array
   var mCurrentIndex = 0;
 
   // Add click handler for #nextPhoto
   $('#nextPhoto').click(function () {
+
       mCurrentIndex++;
       if (mCurrentIndex >= mImages.length) {
 
